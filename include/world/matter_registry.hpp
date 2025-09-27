@@ -6,7 +6,7 @@
 #include <utility>
 
 #include "matter.hpp"
-#include "matter_id.hpp"
+#include "matter_type.hpp"
 
 #include "math/pow.hpp"
 
@@ -15,18 +15,18 @@ namespace forkflow::world {
 class MatterRegistry {
 public:
   template<typename Self>
-  auto&& operator[](this Self&& self, MatterId) noexcept;
+  auto&& operator[](this Self&& self, MatterType) noexcept;
 
 public:
-  void insert(MatterId, std::shared_ptr<Matter>) noexcept;
-  void remove(MatterId) noexcept;
+  void insert(MatterType, std::shared_ptr<Matter>) noexcept;
+  void remove(MatterType) noexcept;
 
 private:
-  std::array<std::shared_ptr<Matter>, forkflow::math::pow(2, static_cast<int>(sizeof(MatterId)*8))> materials_;
+  std::array<std::shared_ptr<Matter>, forkflow::math::pow(2, static_cast<int>(sizeof(MatterType)*8))> materials_;
 }; // class MatterRegistry
 
 template<typename Self>
-auto&& MatterRegistry::operator[](this Self&& self, MatterId id) noexcept {
+auto&& MatterRegistry::operator[](this Self&& self, MatterType type) noexcept {
   return std::forward<Self>(self).materials_[static_cast<int>(id)];
 }
 

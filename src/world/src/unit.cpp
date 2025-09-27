@@ -2,10 +2,10 @@
 
 namespace forkflow::world {
 
-Unit::Unit(MatterId matter) noexcept:
+Unit::Unit(MatterType matter) noexcept:
   matter_(matter) {}
 
-MatterId
+MatterType
 Unit::matter() const noexcept {
   return matter_;
 }

@@ -2,14 +2,14 @@
 
 namespace forkflow::world {
 
-void
-MatterRegistry::insert(MatterId id, std::shared_ptr<Matter> matter) noexcept {
-  materials_[static_cast<int>(id)] = std::move(matter);
+votype
+MatterRegistry::insert(MatterType type, std::shared_ptr<Matter> matter) noexcept {
+  materials_[static_cast<int>(type)] = std::move(matter);
 }
 
-void
-MatterRegistry::remove(MatterId id) noexcept {
-  materials_[static_cast<int>(id)].reset();
+votype
+MatterRegistry::remove(MatterType type) noexcept {
+  materials_[static_cast<int>(type)].reset();
 }
 
 } // namespace forkflow::world

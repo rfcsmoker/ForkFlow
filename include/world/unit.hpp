@@ -1,19 +1,19 @@
 #ifndef FORKFLOW_WORLD_UNIT_HPP
 #define FORKFLOW_WORLD_UNIT_HPP
 
-#include "matter_id.hpp"
+#include "matter_type.hpp"
 
 namespace forkflow::world {
 
 class Unit {
 public:
-  explicit Unit(MatterId) noexcept;
+  explicit Unit(MatterType) noexcept;
 
 public:
-  MatterId matter() const noexcept;
+  MatterType matter() const noexcept;
 
 private:
-  MatterId matter_;
+  MatterType matter_;
 }; // class Unit
 
 } // namespace forkflow::world
