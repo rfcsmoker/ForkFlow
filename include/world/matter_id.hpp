@@ -7,6 +7,7 @@ namespace forkflow::world {
 
 enum class MatterId: std::uint8_t {
   NONE = 0,
+  SOIL = 1,
   UNIQUE = 255
 }; // enum class MatterId
 
