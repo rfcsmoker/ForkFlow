@@ -8,26 +8,26 @@
 #include <utility>
 
 #include "unit.hpp"
-#include "vector.hpp"
+#include "coord.hpp"
 
 namespace forkflow::world {
 
 class UnitRegistry {
 public:
   template<typename Self>
-  auto operator[](this Self&& self, Vector3D at) noexcept
+  auto operator[](this Self&& self, Coord3D at) noexcept
     -> std::expected<decltype(*(std::forward<Self>(self).units_.find(at))->second), std::string>;
 
 public:
-  void insert(Vector3D, std::shared_ptr<Unit>) noexcept;
-  void remove(Vector3D) noexcept;
+  void insert(Coord3D, std::shared_ptr<Unit>) noexcept;
+  void remove(Coord3D) noexcept;
 
 private:
-  std::unordered_map<Vector3D, std::shared_ptr<Unit>> units_;
+  std::unordered_map<Coord3D, std::shared_ptr<Unit>> units_;
 }; // class UnitRegistry
 
 template<typename Self>
-auto UnitRegistry::operator[](this Self&& self, Vector3D at) noexcept
+auto UnitRegistry::operator[](this Self&& self, Coord3D at) noexcept
     -> std::expected<decltype(*(std::forward<Self>(self).units_.find(at))->second), std::string> {
 
   auto it = std::forward<Self>(self).units_.find(at);
