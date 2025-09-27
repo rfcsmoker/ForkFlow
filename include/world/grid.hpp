@@ -1,5 +1,5 @@
-#ifndef FORKFLOW_WORLD_SPACE3D_HPP
-#define FORKFLOW_WORLD_SPACE3D_HPP
+#ifndef FORKFLOW_WORLD_GRID_HPP
+#define FORKFLOW_WORLD_GRID_HPP
 
 #include <cstddef>
 #include <utility>
@@ -10,9 +10,9 @@
 
 namespace forkflow::world {
 
-class Space3D {
+class Grid {
 public:
-  explicit Space3D(std::size_t x_len, std::size_t y_len, std::size_t z_len) noexcept;
+  explicit Grid(std::size_t x_len, std::size_t y_len, std::size_t z_len) noexcept;
 
 public:
   template<typename Self>
@@ -21,14 +21,14 @@ public:
 
 private:
   boost::multi_array<MatterId, 3> iles_;
-}; // class Space3D
+}; // class Grid
 
 template<typename Self>
-auto Space3D::operator()(this Self&& self, std::size_t x, std::size_t y, std::size_t z) noexcept ->
+auto Grid::operator()(this Self&& self, std::size_t x, std::size_t y, std::size_t z) noexcept ->
     decltype(std::forward<Self>(self).iles_[x][y][z]) {
   return std::forward<Self>(self).iles_[x][y][z];
 }
 
 } // namespace forkflow::world
 
-#endif // FORKFLOW_WORLD_SPACE3D_HPP
+#endif // FORKFLOW_WORLD_GRID_HPP
