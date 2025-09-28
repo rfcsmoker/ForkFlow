@@ -1,21 +1,21 @@
-#ifndef FORKFLOW_WORLD_UNIT_HPP
-#define FORKFLOW_WORLD_UNIT_HPP
+#ifndef FORKFLOW_WORLD_BLOCK_HPP
+#define FORKFLOW_WORLD_BLOCK_HPP
 
 #include "matter_type.hpp"
 
 namespace forkflow::world {
 
-class Unit {
+class Block {
 public:
-  explicit Unit(MatterType) noexcept;
+  explicit Block(MatterType) noexcept;
 
 public:
   MatterType matter() const noexcept;
 
 private:
   MatterType matter_;
-}; // class Unit
+}; // class Block
 
 } // namespace forkflow::world
 
-#endif // FORKFLOW_WORLD_UNIT_HPP
+#endif // FORKFLOW_WORLD_BLOCK_HPP

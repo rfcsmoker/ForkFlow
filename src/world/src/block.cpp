@@ -1,12 +1,12 @@
-#include "world/unit.hpp"
+#include "world/block.hpp"
 
 namespace forkflow::world {
 
-Unit::Unit(MatterType matter) noexcept:
+Block::Block(MatterType matter) noexcept:
   matter_(matter) {}
 
 MatterType
-Unit::matter() const noexcept {
+Block::matter() const noexcept {
   return matter_;
 }
 
