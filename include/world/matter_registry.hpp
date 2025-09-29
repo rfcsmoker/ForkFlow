@@ -27,7 +27,7 @@ private:
 
 template<typename Self>
 auto&& MatterRegistry::operator[](this Self&& self, MatterType type) noexcept {
-  return std::forward<Self>(self).materials_[static_cast<int>(id)];
+  return std::forward<Self>(self).materials_[static_cast<int>(type)];
 }
 
 } // namespace forkflow::world
