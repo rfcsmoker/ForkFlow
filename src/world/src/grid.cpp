@@ -2,7 +2,7 @@
 
 namespace forkflow::world {
 
-Grid::Grid(std::size_t x_len, std::size_t y_len, std::size_t z_len) noexcept:
+Grid::Grid(Metrics x_len, Metrics y_len, Metrics z_len) noexcept:
   iles_(boost::extents[x_len][y_len][z_len]) {}
 
 } // namespace forkflow::world

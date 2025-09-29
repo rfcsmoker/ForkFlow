@@ -7,16 +7,17 @@
 #include <boost/multi_array.hpp>
 
 #include "matter_type.hpp"
+#include "metrics.hpp"
 
 namespace forkflow::world {
 
 class Grid {
 public:
-  explicit Grid(std::size_t x_len, std::size_t y_len, std::size_t z_len) noexcept;
+  explicit Grid(Metrics x_len, Metrics y_len, Metrics z_len) noexcept;
 
 public:
   template<typename Self>
-  auto operator()(this Self&& self, std::size_t x, std::size_t y, std::size_t z) noexcept ->
+  auto operator()(this Self&& self, Metrics x, Metrics y, Metrics z) noexcept ->
     decltype(std::forward<Self>(self).iles_[x][y][z]);
 
 private:
@@ -24,7 +25,7 @@ private:
 }; // class Grid
 
 template<typename Self>
-auto Grid::operator()(this Self&& self, std::size_t x, std::size_t y, std::size_t z) noexcept ->
+auto Grid::operator()(this Self&& self, Metrics x, Metrics y, Metrics z) noexcept ->
     decltype(std::forward<Self>(self).iles_[x][y][z]) {
   return std::forward<Self>(self).iles_[x][y][z];
 }
