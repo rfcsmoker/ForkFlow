@@ -6,7 +6,7 @@
 
 #include <boost/multi_array.hpp>
 
-#include "matter_id.hpp"
+#include "matter_type.hpp"
 
 namespace forkflow::world {
 
@@ -20,7 +20,7 @@ public:
     decltype(std::forward<Self>(self).iles_[x][y][z]);
 
 private:
-  boost::multi_array<MatterId, 3> iles_;
+  boost::multi_array<MatterType, 3> iles_;
 }; // class Grid
 
 template<typename Self>
