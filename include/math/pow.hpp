@@ -5,8 +5,8 @@
 
 namespace forkflow::math {
 
-template<std::integral T>
-constexpr T pow(T base, T n) noexcept {
+template<std::integral Base, std::integral N>
+constexpr Base pow(Base base, N n) noexcept {
 
   if (n == 0)
     return 1;
