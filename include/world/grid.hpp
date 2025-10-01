@@ -5,6 +5,7 @@
 
 #include <boost/multi_array.hpp>
 
+#include "coord.hpp"
 #include "metrics.hpp"
 
 namespace forkflow::world {
@@ -16,8 +17,8 @@ public:
 
 public:
   template<typename Self>
-  auto operator()(this Self&& self, Metrics x, Metrics y, Metrics z) noexcept ->
-    decltype(std::forward<Self>(self).iles_[x][y][z]);
+  auto operator[](this Self&& self, Coord3D at) noexcept
+    -> decltype(std::forward<Self>(self).iles_[at.a[0]][at.a[1]][at.a[2]]);
 
 private:
   boost::multi_array<Id, 3> iles_;
@@ -29,8 +30,9 @@ Grid<Id>::Grid(Metrics x_len, Metrics y_len, Metrics z_len) noexcept:
 
 template<typename Id>
 template<typename Self>
-auto Grid<Id>::operator()(this Self&& self, Metrics x, Metrics y, Metrics z) noexcept ->
-    decltype(std::forward<Self>(self).iles_[x][y][z]) {
+auto Grid<Id>::operator[](this Self&& self, Coord3D at) noexcept
+    -> decltype(std::forward<Self>(self).iles_[at.a[0]][at.a[1]][at.a[2]]) {
+  const auto& [x, y, z] = at.a;
   return std::forward<Self>(self).iles_[x][y][z];
 }
 
